@@ -5,38 +5,169 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/*custom variables*/
+:root{
+    --primary: #3b82f6;
+    --success: #10b981;
+    --mindful: #8b5cf6;
+    --danger: #ef4444;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --bg-light: #f3f4f6;
+    --bg-dark: #1f2937;
+    --input-bg: #fff;
+    --input-border: #d1d5db;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --font-family:'Inter',system-ui ,-apple-system ,sans-serif;
+}
+
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 1000;
+    background-color: var(--text-primary);
+    color: var(--input-bg);
+    font-weight: bold;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.skip-link:focus {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    clip: auto;
+    overflow: visible;
+}
+
+
+body{
+    background-color: var(--input-bg);
+}
+
 header {
-    background-color: #4caf50;
-    color: #fff;
+    background-color: var(--success);
+    color: var(--input-bg);
     text-align: center;
-    padding: 1rem 0;
+    padding: 0.6rem 0;
+}
+
+header h1{
+    font-size: clamp(0.75rem, 2vw, 1rem);
 }
 
 main {
-    padding: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-h1,h2 {
-    margin-bottom: 0.9rem;
+#add-expense{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#add-expense h2{
+    font-size: 0.9rem;
+    color: var(--primary);
+    padding: 0.4rem 0;
+}
+
+#table-caption{
+    color: var(--mindful);
 }
 
 form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    grid-template-columns:repeat(2,1fr);
+    gap: 0.6rem;
+    font-size: 0.75rem;
+}
+@media (min-width:600px){
+    #expense-form{
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    input{
+        font-size: 1rem;
+    }
+
+    body{
+        font-size: 1rem;
+    }
+    #add-expense{
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1rem;
+    }
+}
+
+form label{
+    display: flex;
+    align-items: center;
+    color: var(--mindful);
+    font-weight: 600;
+    padding-left: 0.5rem;
 }
 
 form input,form select ,form button {
-    width: 35vw;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.75rem;
     border-radius: 5px;
-    
+    border: 1px solid ;
+}
+
+form button{
+    color: var(--input-bg);
+    font-weight: 600;
+    background-color: var(--success);
 }
 
 form input:hover,form select:hover{
     box-shadow: 0 4px 8px #333;
+}
+
+#expense-list{
+    width: 92vw;
+    font-size: 0.5rem;
+}
+
+#expense-list h2{
+    color: var(--bg-dark);
+}
+
+@media (min-width:600px){
+    #expense-list{
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    table button{
+        font-size: 1rem;
+    }
+    
+    table .btn{
+        width: auto;
+        padding: 0.4rem;
+    }
+
+    #summary p{
+        max-width: 800px;
+        margin: 0 auto;
+    }
 }
 
 table {
@@ -46,13 +177,19 @@ table {
 }
 
 table th , table td {
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     padding: 0.5rem;
     text-align: center;
 }
 
+table td{
+    color: var(--primary);
+    font-weight: 600;
+}
+
 table th {
-    background-color: #f4f4f4;
+    background-color: var(--text-primary);
+    color: var(--input-bg);
 }
 
 button {
@@ -72,10 +209,32 @@ button:hover {
 #summary p{
     margin-top: 1rem;
     font-weight: bold;
-    color: #333;
+    font-size: 0.9rem;
+    color: var(--success);
+    position: sticky;
 }
 
 table button{
     height: 20px;
     width: 50px;
+}
+
+table .btn{
+    width: auto;
+    padding: 0.2rem;
+    background: none;
+    color: var(--success);
+}
+
+#delete-btn{
+    color: var(--danger);
+}
+
+footer{
+    background-color: var(--success);
+    color: var(--bg-light);
+    padding: 0.4rem;
+    font-size: 0.75rem;
+    text-align: center;
+    position: fixed; bottom: 0;left: 0; right: 0;
 }
